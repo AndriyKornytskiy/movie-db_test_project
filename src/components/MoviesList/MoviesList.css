@@ -1,0 +1,34 @@
+.movies_list_card{
+    width: 220px;
+    margin-bottom: 20px;
+}
+.movies_list_card a {
+    text-decoration: none;
+    color: #000;
+}
+.movies_list_card img{
+    display: block;
+    border: 1px solid lightslategray;
+    padding: 2px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+.movies_list_card-overview{
+    height: 75px;
+    overflow: hidden;
+}
+.vote_count{
+    font-size: 16px;
+    color: lightslategray;
+    
+}
+.star_rating{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.movies_list_genres{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 10px;
+}

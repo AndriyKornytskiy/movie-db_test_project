@@ -1,0 +1,37 @@
+.info{
+    color: #999999;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.info img{
+    border: 1px solid #999;
+    padding: 1px;
+}
+.info_table td{
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.info_table tr{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+.info_table h2{
+    font-size: 30px;
+}
+.info_overview{
+    color: #999999;
+    margin-top: 15px;
+}
+.home_page{
+    text-decoration: none;
+}
+.second_img{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,7 @@
+.genre_item{
+    color: #999;
+    border: 1px solid lightslategray;
+    background-color: lightgray;
+    border-radius: 15px;
+    padding: 3px;
+}

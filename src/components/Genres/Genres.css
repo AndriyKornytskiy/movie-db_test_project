@@ -1,0 +1,8 @@
+.genres{
+    height: 75px;
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
