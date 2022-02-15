@@ -13,7 +13,7 @@ const App = () => {
         <div className={darkMode ? "dark-style" : "light-style"}>
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
-                    <Route index element={<Navigate to={'movies?page='}/>}/>
+                    <Route index element={<Navigate to={`movies?page=`}/>}/>
                     <Route path={'movies'} element={<MoviesPage/>}/>
                     <Route path={'movies/movie/:id'} element={<MoviesDetailsPage/>}/>
                 </Route>

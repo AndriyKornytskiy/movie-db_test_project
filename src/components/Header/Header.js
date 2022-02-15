@@ -1,15 +1,17 @@
-import './Header.css';
+import {NavLink} from "react-router-dom";
+
+import {ThemeSwitcher} from "../ThemeSwitcher/ThemeSwitcher";
 import logo from './logo.jpg';
 import avatar from './avatar.jpg'
-import {ThemeSwitcher} from "../ThemeSwitcher/ThemeSwitcher";
+import './Header.css';
 
 const Header = () => {
     return (
         <div className='header'>
-            <div className='header_logo'>
+            <NavLink to={'movies?page='} className='header_logo' onClick={window.location.reload}>
                 <img src={logo} alt="logo"/>
                 <h2>movieland</h2>
-            </div>
+            </NavLink>
             <div className='header_input'>
                 <input type="text" placeholder="find movie..."/>
             </div>

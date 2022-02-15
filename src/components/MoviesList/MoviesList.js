@@ -3,8 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {StarRating} from "../StarRating/StarRating";
 import {getMovieId} from "../../store";
-import './MoviesList.css'
 import {Genre} from "../Genre/Genre";
+import {genreFilter} from "../../helpers";
+import './MoviesList.css'
 
 const MoviesList = ({movie}) => {
     const {id, title, genre_ids, overview, release_date, vote_average, poster_path, vote_count} = movie;
@@ -12,18 +13,6 @@ const MoviesList = ({movie}) => {
     const {genres} = useSelector(state => state.genres);
 
     const dispatch = useDispatch();
-
-    const genreFilter = (stateArr, responseArr) => {
-        const filtered = [];
-        for (const responseItem of responseArr) {
-            for (const stateArrItem of stateArr) {
-                if (stateArrItem.id === responseItem){
-                    filtered.push(stateArrItem)
-                }
-            }
-        }
-        return filtered;
-    };
 
     const genreFiltered = genreFilter(genres, genre_ids);
 

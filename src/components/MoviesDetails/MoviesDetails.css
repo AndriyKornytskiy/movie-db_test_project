@@ -35,3 +35,8 @@
     display: flex;
     justify-content: center;
 }
+.info_genres a{
+    border: none;
+    background: none;
+    cursor: default;
+}

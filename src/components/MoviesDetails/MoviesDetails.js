@@ -1,4 +1,5 @@
-import './MoviesDetails.css'
+import {Genre} from "../Genre/Genre";
+import './MoviesDetails.css';
 
 const MoviesDetails = ({movieDetails}) => {
     const {
@@ -41,11 +42,8 @@ const MoviesDetails = ({movieDetails}) => {
                             </tr>
                             <tr>
                                 <td><h2>Genres</h2>:</td>
-                                <td>
-                                    <span>Боевики</span>
-                                    <span>Приключения</span>
-                                    <span>Фэнтези</span>
-                                    <span>Зарубежные</span>
+                                <td className='info_genres'>
+                                    {genres && genres.map(genre => <Genre key={genre.id} genre={genre}/>)}
                                 </td>
                             </tr>
                             <tr>

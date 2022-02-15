@@ -4,4 +4,8 @@
     background-color: lightgray;
     border-radius: 15px;
     padding: 3px;
+    text-decoration: none;
+}
+.genre_item:hover{
+    color: #999;
 }

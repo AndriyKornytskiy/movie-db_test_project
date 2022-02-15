@@ -2,15 +2,18 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 import {moviesService} from "../../services";
 
-const initialState = {
-    movies: [],
-    // movieDetails: {},
-    currentPage: null,
-    // currentId: 568124,
-    totalPages: 500,
-    status: null,
-    error: null
-};
+
+export const getAllMoviesByGenre = createAsyncThunk(
+    'movies/getAllMoviesByGenre',
+    async (genreId,{rejectWithValue}) => {
+        try {
+            const {currentPageSorted} = moviesSortedByGenreSlice.getInitialState();
+            return await moviesService.getAllByGenre(genreId,currentPageSorted);
+        } catch (e) {
+            return rejectWithValue(e.message);
+        }
+    }
+)
 
 export const getAllMovies = createAsyncThunk(
     'movies/getAllMovies',
@@ -24,22 +27,15 @@ export const getAllMovies = createAsyncThunk(
     }
 )
 
-// export const getMovieDetails = createAsyncThunk(
-//     'movies/getMovieDetails',
-//     async (currentId,{rejectWithValue}) => {
-//         try {
-//             const movieDetails = await moviesService.getByID(568124);
-//             return movieDetails;
-//         } catch (e) {
-//             return rejectWithValue(e.message)
-//         }
-//     }
-//
-// )
-
 const movieSlice = createSlice({
     name: 'movies',
-    initialState,
+    initialState: {
+        movies: [],
+        currentPage: null,
+        totalPages: 500,
+        status: null,
+        error: null
+    },
     reducers: {
         changePage:(state, action) => {
             const payload = action.payload;
@@ -54,6 +50,7 @@ const movieSlice = createSlice({
         [getAllMovies.fulfilled]: (state, action) => {
             state.status = 'fulfilled';
             state.movies = action.payload.results;
+            state.status = null;
         },
         [getAllMovies.rejected]: (state, action) => {
             state.status = 'rejected';
@@ -62,31 +59,44 @@ const movieSlice = createSlice({
     }
 });
 
-// const movieDetailsSlice = createSlice({
-//     name: 'movieDetails',
-//     initialState,
-//     reducers: {
-//         getMovieId:(state, action) => {
-//             const payload_id = action.payload;
-//             state.currentId = payload_id;
-//         }
-//     },
-//     extraReducers: {
-//         [getMovieDetails.pending]: (state) => {
-//             state.error = null;
-//         },
-//         [getMovieDetails.fulfilled]: (state, action) => {
-//             console.log(action.payload);
-//         },
-//         [getMovieDetails.rejected]: (state, action) => {
-//             state.error = action.payload;
-//         }
-//     }
-// });
+const moviesSortedByGenreSlice = createSlice({
+    name: 'moviesSortedByGenre',
+    initialState: {
+        moviesSortedByGenre: [],
+        genreId: null,
+        currentPageSorted: null,
+        totalSortedPages: null,
+        status: null,
+        error: null
+    },
+    reducers: {
+        getGenreId:(state, action) => {
+            state.genreId = action.payload;
+        },
+        changePageSorted:(state, action) => {
+            state.currentPageSorted = action.payload;
+        }
+    },
+    extraReducers: {
+        [getAllMoviesByGenre.pending]: (state) => {
+            state.status = 'pending';
+            state.error = null;
+        },
+        [getAllMoviesByGenre.fulfilled]:(state, action) => {
+            state.status = 'fulfilled';
+            state.moviesSortedByGenre = action.payload.results;
+            state.totalSortedPages = action.payload.total_pages;
+        },
+        [getAllMoviesByGenre.rejected]:(state, action) => {
+            state.status = 'rejected';
+            state.error = action.payload;
+        }
+    }
+})
 
 const movieReducer = movieSlice.reducer;
-// const movieDetailsReducer = movieDetailsSlice.reducer;
+const movieSortedByGenreReducer = moviesSortedByGenreSlice.reducer;
 
 export const {changePage} = movieSlice.actions;
-// export const {getMovieId} = movieDetailsSlice.actions;
-export {movieReducer/*, movieDetailsReducer*/};
+export const {getGenreId, changePageSorted} = moviesSortedByGenreSlice.actions;
+export {movieReducer, movieSortedByGenreReducer};

@@ -13,9 +13,7 @@ export const getMovieDetails = createAsyncThunk(
     'movies/getMovieDetails',
     async (currentId,{rejectWithValue}) => {
         try {
-            const id = initialState.currentId;
-            const movieDetails = await moviesService.getByID(id);
-            return movieDetails;
+            return await moviesService.getByID(currentId);
         } catch (e) {
             return rejectWithValue(e.message)
         }

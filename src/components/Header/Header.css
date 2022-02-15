@@ -20,6 +20,10 @@
     align-items: center;
     font-size: xx-large;
     color: tomato;
+    text-decoration: none;
+}
+.header_logo:hover{
+    color: tomato;
 }
 .header_input{
     width: 45%;
