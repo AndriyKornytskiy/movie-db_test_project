@@ -15,7 +15,7 @@ const MoviesPage = () => {
 
     useEffect(() => {
         dispatch(getAllMovies(currentPage))
-        dispatch(getAllMoviesByGenre(genreId, currentPageSorted))
+        dispatch(getAllMoviesByGenre({genreId,currentPageSorted}))
     }, [currentPage, genreId, currentPageSorted])
 
     return (

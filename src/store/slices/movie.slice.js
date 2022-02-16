@@ -5,10 +5,10 @@ import {moviesService} from "../../services";
 
 export const getAllMoviesByGenre = createAsyncThunk(
     'movies/getAllMoviesByGenre',
-    async (genreId,{rejectWithValue}) => {
+    async (data,{rejectWithValue}) => {
         try {
-            const {currentPageSorted} = moviesSortedByGenreSlice.getInitialState();
-            return await moviesService.getAllByGenre(genreId,currentPageSorted);
+            const {genreId, currentPageSorted} = data;
+            return await moviesService.getAllByGenre(genreId, currentPageSorted);
         } catch (e) {
             return rejectWithValue(e.message);
         }
@@ -72,6 +72,7 @@ const moviesSortedByGenreSlice = createSlice({
     reducers: {
         getGenreId:(state, action) => {
             state.genreId = action.payload;
+            state.currentPageSorted = 1;
         },
         changePageSorted:(state, action) => {
             state.currentPageSorted = action.payload;
