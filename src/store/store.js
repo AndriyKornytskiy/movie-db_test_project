@@ -1,5 +1,12 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {genreReducer, movieDetailsReducer, movieReducer, movieSortedByGenreReducer, themeReducer} from "./slices";
+import {
+    genreReducer,
+    movieDetailsReducer,
+    movieReducer,
+    movieSortedByGenreReducer,
+    searchReducer,
+    themeReducer
+    } from "./slices";
 
 const store = configureStore({
     reducer: {
@@ -7,7 +14,8 @@ const store = configureStore({
         movieDetails: movieDetailsReducer,
         genres: genreReducer,
         theme: themeReducer,
-        movieSorted: movieSortedByGenreReducer
+        movieSorted: movieSortedByGenreReducer,
+        search: searchReducer
     }
 });
 

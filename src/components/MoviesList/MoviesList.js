@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 
 import {StarRating} from "../StarRating/StarRating";
@@ -22,12 +22,12 @@ const MoviesList = ({movie}) => {
 
     return (
         <div className='movies_list_card'>
-            <Link to={`movie/${id}`}>
+            <NavLink to={`/movies/movie/${id}`}>
                 <img  onClick={onclick}
                 src={`https://www.themoviedb.org/t/p/w220_and_h330_face${poster_path}`}
                 alt={title}
             />
-            </Link>
+            </NavLink>
             <div className='star_rating'><StarRating rate={vote_average}/><span className='vote_count'>{vote_count}</span></div>
                 <h2>{title}</h2>
                 <div className='movies_list_genres'>

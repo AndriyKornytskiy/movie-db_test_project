@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import ReactPaginate from "react-paginate";
 
-import {changePage, changePageSorted} from "../../store";
+import {changePage, changePageSorted, changeSearchedPage} from "../../store";
 
 const Pagination = ({totalPages}) => {
     const {darkMode} = useSelector(state => state.theme);
@@ -9,8 +9,9 @@ const Pagination = ({totalPages}) => {
 
     function handlePage(data) {
         let selectedPage = data.selected + 1;
-        dispatch(changePage(selectedPage))
-        dispatch(changePageSorted(selectedPage))
+        dispatch(changePage(selectedPage));
+        dispatch(changePageSorted(selectedPage));
+        dispatch(changeSearchedPage(selectedPage));
     }
 
     return (

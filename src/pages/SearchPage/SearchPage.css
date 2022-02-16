@@ -1,0 +1,14 @@
+.search_page{
+    width: 98%;
+    height: calc(100vh - 195px);
+    margin: 0 auto;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.search_list_wrap{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 99%;
+}

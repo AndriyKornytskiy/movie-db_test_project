@@ -36,6 +36,7 @@
     border-radius: 25px;
     border: none;
     font-size: medium;
+    user-select: text;
 }
 .header_day-night{
     width: 11%;
@@ -54,4 +55,17 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+.header_input form {
+    display: flex;
+    position: relative;
+}
+.header_input_btn{
+    position: absolute;
+    right: 0;
+    height: 35px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: none;
+    padding: 5px;
 }
